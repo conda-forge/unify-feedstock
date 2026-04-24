@@ -10,7 +10,7 @@ source:
   sha256: 8ddce812b2457212b7598fe574c9e6eb3ad69710f445391338270c7f8a71723c
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - unify = unify:main
@@ -19,14 +19,15 @@ build:
 requirements:
   host:
     - pip
-    - python >=2.6
+    - python {{ python_min }}
   run:
-    - python >=2.6
+    - python >={{ python_min }}
     - untokenize
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - unify --help
